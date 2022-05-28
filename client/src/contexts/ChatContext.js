@@ -3,9 +3,7 @@ import React, { createContext, useContext, useState } from "react";
 const ChatContext = createContext();
 
 export const ChatContextProvider = ({ children }) => {
-  const [chat, setChat] = useState([
-    // { id: 2, text: "Sana da Merhaba", isFromMe: true },
-  ]);
+  const [chat, setChat] = useState([]);
 
   const values = {
     chat,
