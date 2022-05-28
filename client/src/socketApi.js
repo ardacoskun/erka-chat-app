@@ -2,7 +2,7 @@ import { io } from "socket.io-client";
 
 let socket;
 export const init = () => {
-  socket = io("http://localhost:3000/", {
+  socket = io(process.env.REACT_APP_WS_EDNPOINT, {
     transports: ["websocket"],
   });
 
