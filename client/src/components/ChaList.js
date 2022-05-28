@@ -16,7 +16,6 @@ function ChaList() {
           >
             <div className="chat-item">
               <div className="chat-bubble">{item.text}</div>
-              <p>{moment().calendar()}</p>
             </div>
           </div>
         ))}

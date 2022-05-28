@@ -12,15 +12,15 @@ app.get("/", (req, res) => {
 io.on("connection", (socket) => {
   console.log("a user connected");
 
-  socket.on("typing", (data) => {
-    if (data.typing == true) {
-      console.log("typing");
-      io.emit("display", data);
-    } else {
-      console.log("none");
-      io.emit("display", data);
-    }
-  });
+  // socket.on("typing", (data) => {
+  //   if (data.typing == true) {
+  //     console.log("typing");
+  //     io.emit("display", data);
+  //   } else {
+  //     console.log("none");
+  //     io.emit("display", data);
+  //   }
+  // });
 
   socket.on("new-message", (message) => {
     console.log(message);

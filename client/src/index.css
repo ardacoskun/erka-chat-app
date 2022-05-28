@@ -58,3 +58,10 @@
   align-items: flex-end;
   font-size: 12px;
 }
+
+.send-form {
+  display: flex;
+}
+.send-form > button {
+  cursor: pointer;
+}

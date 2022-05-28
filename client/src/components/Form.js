@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useChat } from "../contexts/ChatContext";
+import { useLanguage } from "../contexts/LanguageContext";
 import { init, sendMessage, typingListen } from "../socketApi";
 
 function Form() {
   const { setChat } = useChat();
+  const { language } = useLanguage();
   const [text, setText] = useState("");
 
   const handleSubmit = (e) => {
@@ -21,11 +23,17 @@ function Form() {
   return (
     <div className="form-container">
       <form onSubmit={handleSubmit}>
-        <input
-          className="message"
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-        />
+        <div className="send-form">
+          <input
+            className="message"
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+          />
+
+          <button type="submit">{`${
+            language === "en" ? "Send" : "Gönder"
+          }`}</button>
+        </div>
       </form>
     </div>
   );
