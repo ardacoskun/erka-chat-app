@@ -5,25 +5,28 @@ import { useLanguage } from "../contexts/LanguageContext";
 import { init, sendMessage, typingListen } from "../socketApi";
 
 function Form() {
-  const { setChat } = useChat();
+  const { setChat, chat } = useChat();
   const { language } = useLanguage();
   const [text, setText] = useState({
+    name: "",
     msg: "",
-    date: moment().calendar(),
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    if (!text.msg) {
+    if (!text.msg || !text.name) {
+      alert("Please write something");
       return;
     }
 
-    setChat((prev) => [...prev, { text, isFromMe: true }]);
-    console.log("text", text.date);
+    setChat((prev) => [...prev, { ...text, isFromMe: true }]);
 
     sendMessage(text);
     setText(text);
+  };
+
+  const handleChange = (e) => {
+    setText({ ...text, [e.target.name]: e.target.value });
   };
 
   return (
@@ -32,8 +35,18 @@ function Form() {
         <div className="send-form">
           <input
             className="message"
+            value={text.name}
+            name="name"
+            placeholder={`${language === "en" ? "Name" : "İsim"}`}
+            onChange={handleChange}
+          />
+
+          <input
+            className="message"
             value={text.msg}
-            onChange={(e) => setText(e.target.value)}
+            onChange={handleChange}
+            name="msg"
+            placeholder={`${language === "en" ? "Message" : "Mesaj..."}`}
           />
 
           <button type="submit">{`${

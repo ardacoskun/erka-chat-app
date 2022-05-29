@@ -35,10 +35,17 @@
 .chat-list .chat-item {
   background-color: #72a5d2;
   display: inline-flex;
+  flex-direction: column;
   padding: 6px;
   border-radius: 5px;
   font-size: 1.1rem;
   margin: 5px;
+}
+
+.chat-item .name {
+  align-items: flex-start;
+  margin-bottom: 10px;
+  font-weight: bold;
 }
 
 .chat-item-container {

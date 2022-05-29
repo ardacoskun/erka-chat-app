@@ -6,7 +6,7 @@ import ChaList from "./ChaList";
 import Form from "./Form";
 
 function Container() {
-  const { setChat } = useChat();
+  const { setChat, chat } = useChat();
   const { language, setLanguage } = useLanguage();
 
   useEffect(() => {
