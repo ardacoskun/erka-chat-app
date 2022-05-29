@@ -23,6 +23,8 @@ function Form() {
 
     sendMessage(text);
     setText(text);
+
+    setText({ ...text, name: "", msg: "" });
   };
 
   const handleChange = (e) => {
